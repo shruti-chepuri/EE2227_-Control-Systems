@@ -1,0 +1,180 @@
+%\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+%\mode<presentation>
+%{
+%  \usetheme{NYU}      % or try Darmstadt, Madrid, Warsaw, ...
+%  \usecolortheme{default} % or try albatross, beaver, crane, ...
+%  \usefonttheme{default}  % or try serif, structurebold, ...
+%  \setbeamertemplate{navigation symbols}{}
+% \setbeamertemplate{caption}[numbered]
+%} 
+
+%\usepackage[english]{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8x]{inputenc}
+%\usepackage{hyperref}
+%\begin{document}
+%\title[EE2227]{CONTROL SYSTEMS}
+%subtitle{HOMEWORK-1}
+%\author{BHUKYA SIDDHU\\ EE18BTECH11004}
+%\institute{IITH}
+%\date{\today}
+
+
+
+%\begin{frame}
+%  \titlepage
+%\end{frame}
+%\item \textbf{Question 33}
+\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+\numberwithin{equation}{enumi}
+\item Let the state-space representation of an LTI system be.
+\begin{align*}
+ \dot{x(t)}=Ax(t)+Bu(t) \\
+ y(t)=Cx(t)+Du(t)
+\end{align*}
+A,B,C are matrices, D is scalar, u(t) is input to the system and y(t) is output to the system. let
+\begin{equation}
+ b1 =\begin{vmatrix}
+  0&0&1\\
+ \end{vmatrix}
+\end{equation}
+\begin{align}
+b1^T=B
+\end{align}
+and D=0. Find A and C.
+\begin{align}
+H(s)=\frac{1}{s^3+3s^2+2s+1}
+\end{align}
+\solution
+\\ \textbf{FINDING TRANSFER FUNCTION}
+\\so
+\begin{align*}
+ \dot{X(t)}=AX(t)+BU(t) \\
+ Y(t)=CX(t)+DU(t)
+\end{align*}    
+\\by applying laplace transforms on both sides of equation 1
+we get
+\\S.X(S)-X(0)=A.X(S)+B.U(S)
+\\S.X(S)-A.X(S)=B.U(S)+X(0)
+\\(SI-A)X(S)=X(0)+B.U(S)
+\\$X(S)=X(0)([SI-A])^{-1}+ B([SI-A])^{-1}U(S)$
+\\Laplace transform of equation 2 and sub X(s) 
+\\Y(S)=C.X(S)+D.U(S)
+\\$Y(S)=C.[X(0)([SI-A])^{-1 }+ B([SI-A])^{-1}U(S)]+DU(S)$
+\\If X(0)=0
+\\then $Y(S)=C[B([SI-A])^{-1}U(S)]+DU(S)$
+\\$\frac{Y(S)}{U(S)}=C[B([SI-A])^{-1}]+D=H(S)$
+\\
+\\ As we know that
+\\ $Y(s)=H(s) \times U(s)= (\frac{1}{s^3+3s^2+2s+1}) \times U(s) $
+\\
+\\ $H(s)=\frac{Y(s)}{U(s)}=(\frac{x_{1}(s)}{U(s)})\times \frac{Y(s)}{x_{1}(s)}$
+\\
+\\let   $x_{1}(s)=\frac{U(s)}{denominator}$
+\\
+\\$Y(s)=x_{1}(s)\times numerotor$
+\begin{align}
+s^3x_{1}(s)+3s^2x_{1}(s)+2sx_{1}(s)+x_{1}(s)=U(S)
+\end{align}
+\\ Taking inverse laplace transform we get
+\\$\dddot{x_{1}(t)}+\ddot{x_{1}(t)}+\dot{x_{1}(t)}+x_{1}(t)=U(t)$
+\\$\dot{x_{1}}=x_{2}$
+\\$\ddot{x_{1}}=\dot{x_{2}}=x_{3}$
+\\$\dddot{x_{1}}=\ddot{x_{2}}=\dot{x_{3}}$
+\\ so equation 1.1.4 can be written as
+\\
+\begin{gather}
+\begin{bmatrix}
+sx_{1}(s)\\
+s^2x_{1}(s)\\
+s^3x_{1}(s)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0&1&0\\
+0&0&1\\
+-1&-2&-3
+\end{bmatrix}\times \begin{bmatrix}
+x_{1}(s)\\
+sx_{1}(s)\\
+s^2x{1}(s)
+\end{bmatrix}
++
+\begin{bmatrix}
+0\\
+0\\
+1
+\end{bmatrix} \times U
+\end{gather}
+taking inverse laplace transform
+\begin{gather}
+\begin{bmatrix}
+\dot{x_{1}}\\
+\dot{x_{2}}\\
+\dot{x_{3}}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0&1&0\\
+0&0&1\\
+-1&-2&-3
+\end{bmatrix}\times \begin{bmatrix}
+x_{1}\\
+x_{2}\\
+x_{3}
+\end{bmatrix}
++
+\begin{bmatrix}
+0\\
+0\\
+1
+\end{bmatrix} \times U
+\end{gather}
+therfore
+\begin{equation}
+A=\begin{bmatrix}
+0&1&0\\
+0&0&1\\
+-1&-2&-3
+\end{bmatrix}
+\end{equation}
+\\
+Since $ Y(s)=x_{1}(s)\times numerator$
+\\therefore $ Y(s)=x_{1}(s) $
+\begin{gather}
+\\Y=
+\begin{bmatrix}
+1&0&0
+\end{bmatrix}\times \begin{bmatrix}
+x_{1}(s)\\
+sx_{1}(s)\\
+s^2x_{1}(s)
+\end{bmatrix} 
+\end{gather}
+taking inverse laplace transform
+\begin{gather}
+\\Y=
+\begin{bmatrix}
+1&0&0
+\end{bmatrix}\times \begin{bmatrix}
+x_{1}\\
+x_{2}\\
+x_{3}
+\end{bmatrix} 
+\end{gather}
+\begin{equation}
+C=\begin{bmatrix}
+1&0&0
+\end{bmatrix}
+\end{equation}
+%\end{document}
+
+%\end{document}
+\end{enumerate}
+
