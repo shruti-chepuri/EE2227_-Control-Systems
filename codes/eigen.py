@@ -1,3 +1,5 @@
+#publishing under GNU GPL
+#7-04-20 C Shruti
 import numpy as np
 m = np.matrix([[0, 1, 0],
                [0, 0, 1],
